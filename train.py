@@ -34,7 +34,7 @@ def main():
 
     model = model.to(device)
 
-    chatData = ChatData('sample_data.csv', tokenizer)
+    chatData = ChatData('Final_Dataset.xlsx', tokenizer)
     chatData = DataLoader(chatData, batch_size=4)
     model.train()
 
