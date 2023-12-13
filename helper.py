@@ -17,7 +17,10 @@ torch.cuda.empty_cache()
 # Class for initializing training data
 class ChatData(Dataset):
     def __init__(self, path:str, tokenizer):
-        self.data = pd.read_csv(path, encoding='unicode_escape')
+        if path.endswith('.csv'):
+            self.data = pd.read_csv(path, encoding='unicode_escape')
+        elif path.endswith('.xlsx'):
+            self.data = pd.read_excel(path)
         self.X = []
 
         for idx, row in self.data.iterrows():
